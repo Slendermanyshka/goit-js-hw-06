@@ -6,6 +6,16 @@ const ingredients = [
   'Herbs',
   'Condiments',
 ];
-const listElements = document.querySelector('#ingridients');
-let newList = ingredients.map((element) => '<li>${element}</li>').join("");
-listElements.innerHTML = newList;
+const listEl = document.querySelector('#ingredients');
+
+const newList = ingredients.map(ingridient => {
+
+ const ingridientLiEl = document.createElement('li');
+ ingridientLiEl.classList.add('item');
+ ingridientLiEl.textContent=ingridient;
+ console.log(ingridientLiEl);
+
+return ingridientLiEl;
+});
+
+listEl.append(...newList);
