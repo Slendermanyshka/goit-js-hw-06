@@ -1,14 +1,39 @@
-const cats = document.querySelectorAll('li.item');
-console.log(`Number of categories : ${cats.length}`);
+const customer =
+{
+    username: "Mango",
+    balance: 24000,
+    discount: 0.1,
+    orders: ["Burger", "Pizza", "Salad"],
 
+    getBalance()
+    {
+        return this.balance;
+    },
 
-cats.forEach(element => {
-    const catTitle = element.querySelector('h2');
-    const catEntries = element.querySelectorAll('li');
+    getDiscount()
+    {
+        return this.discount;
+    },
+    
+    setDiscount(value)
+    {
+        this.discount = value;
+    },
+    
+    getOrders()
+    {
+        return this.orders;
+    },
+    
+    addOrder(cost, order)
+    {
+        this.balance -= cost - cost * this.discount;
+        this.orders.push(order);
+    },
 
-
-
-console.log(`Title of category : ${catTitle.textContent}`);
-console.log(`Entries in category : ${catEntries.length}`);
-
-});
+}
+customer.setDiscount(0.15);
+console.log(customer.getDiscount());  // 0.15
+customer.addOrder(5000, "Steak");
+console.log(customer.getBalance());  // 19750
+console.log(customer.getOrders());  // ["Burger", "Pizza", "Salad", "Steak"]
