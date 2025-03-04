@@ -19,7 +19,7 @@ class StringBuilder
     
     padEnd(string)
     {
-        this.#value += string;
+        this.#value = `${this.#value}${string}`;
     }
 
     padBoth(string)
